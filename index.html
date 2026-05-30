@@ -4122,6 +4122,315 @@
 </style>
 
 <!-- ═══════════════════════════════════════════ -->
+<!-- BLOCK 10.5: ВІДГУКИ ТА ГАЛЕРЕЯ           -->
+<!-- ═══════════════════════════════════════════ -->
+<style>
+  /* ─── COUNTER STRIP ─── */
+  .sp-counter-strip{background:rgba(201,148,58,.06);border-top:1px solid rgba(201,148,58,.15);border-bottom:1px solid rgba(201,148,58,.15);padding:28px 24px}
+  .sp-counter-inner{max-width:800px;margin:0 auto;display:flex;justify-content:space-around;flex-wrap:wrap;gap:24px}
+  .sp-counter-item{text-align:center}
+  .sp-counter-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1}
+  .sp-counter-label{font-size:.68rem;color:rgba(255,255,255,.25);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+
+  /* ─── SECTION HEADER ─── */
+  .sp-sec-wrap{max-width:1020px;margin:0 auto;padding:80px 24px}
+  .sp-sec-header{text-align:center;margin-bottom:56px}
+  .sp-sec-tag{display:inline-block;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,148,58,.35);padding:4px 14px;margin-bottom:18px}
+  .sp-sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:600;color:#fff;line-height:1.2;margin-bottom:14px}
+  .sp-sec-title span{color:#e0b86a}
+  .sp-sec-sub{color:rgba(255,255,255,.45);font-size:.88rem;max-width:500px;margin:0 auto}
+  .sp-gold-line{width:40px;height:1px;background:var(--gold);margin:20px auto 0;opacity:.5}
+
+  /* ─── ВІДЗИВИ ─── */
+  .sp-reviews-section{background:linear-gradient(180deg,var(--dark) 0%,#100d0a 50%,var(--dark) 100%)}
+  .sp-reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:900px){.sp-reviews-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:580px){.sp-reviews-grid{grid-template-columns:1fr}}
+  .sp-rev-card{border:1px solid rgba(201,148,58,.18);border-radius:4px;overflow:hidden;cursor:pointer;transition:border-color .3s,transform .3s}
+  .sp-rev-card:hover{border-color:rgba(201,148,58,.5);transform:translateY(-3px)}
+  .sp-rev-card img{width:100%;height:auto;display:block;filter:brightness(.92);transition:filter .3s}
+  .sp-rev-card:hover img{filter:brightness(1)}
+  .sp-rev-featured-wrap{margin-bottom:36px}
+  .sp-rev-featured{background:linear-gradient(135deg,rgba(201,148,58,.1),rgba(201,148,58,.03));border:1px solid rgba(201,148,58,.3);border-radius:4px;padding:36px 40px;position:relative;text-align:center}
+  .sp-rev-featured::before{content:'\201C';position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-family:'Cormorant Garamond',serif;font-size:5rem;color:rgba(201,148,58,.25);line-height:1}
+  .sp-rev-featured-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.35rem);color:#fff;line-height:1.6;font-style:italic;margin-bottom:20px}
+  .sp-rev-featured-author{font-size:.8rem;color:var(--gold);letter-spacing:.06em}
+  .sp-rev-featured-sub{font-size:.72rem;color:rgba(255,255,255,.25);margin-top:4px}
+
+  /* ─── ГАЛЕРЕЯ ─── */
+  .sp-gallery-section{background:#100d0a}
+  .sp-gallery-tabs{display:flex;justify-content:center;gap:6px;margin-bottom:36px}
+  .sp-g-tab{background:transparent;border:1px solid rgba(201,148,58,.25);color:rgba(255,255,255,.45);font-family:'Montserrat',sans-serif;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:7px 18px;cursor:pointer;transition:all .2s}
+  .sp-g-tab:hover,.sp-g-tab.active{border-color:var(--gold);color:var(--gold);background:rgba(201,148,58,.06)}
+  .sp-gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:8px}
+  @media(max-width:900px){.sp-gallery-grid{grid-template-columns:repeat(3,1fr);grid-auto-rows:150px}}
+  @media(max-width:580px){.sp-gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px}}
+  .sp-g-item{position:relative;overflow:hidden;border-radius:3px;cursor:pointer;background:#181310}
+  .sp-g-item.tall{grid-row:span 2}
+  .sp-g-item.wide{grid-column:span 2}
+  .sp-g-item img,.sp-g-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s,filter .4s;filter:brightness(.8)}
+  .sp-g-item:hover img,.sp-g-item:hover .sp-g-thumb{transform:scale(1.05);filter:brightness(1)}
+  .sp-g-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.85) 0%,transparent 55%);opacity:0;transition:opacity .3s;display:flex;flex-direction:column;justify-content:flex-end;padding:14px}
+  .sp-g-item:hover .sp-g-overlay{opacity:1}
+  .sp-g-caption{font-size:.75rem;color:#fff;font-weight:500}
+  .sp-g-sub{font-size:.65rem;color:var(--gold);margin-top:2px;letter-spacing:.05em}
+  .sp-g-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border:2px solid rgba(255,255,255,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);transition:all .25s;pointer-events:none}
+  .sp-g-item:hover .sp-g-play{border-color:var(--gold);background:rgba(201,148,58,.2);transform:translate(-50%,-50%) scale(1.1)}
+  .sp-g-play::after{content:'';display:block;width:0;height:0;border-style:solid;border-width:7px 0 7px 14px;border-color:transparent transparent transparent rgba(255,255,255,.85);margin-left:3px}
+  .sp-g-item:hover .sp-g-play::after{border-color:transparent transparent transparent var(--gold)}
+  .sp-divider{border:none;border-top:1px solid rgba(201,148,58,.1);margin:0}
+
+  /* ─── LIGHTBOX ─── */
+  .sp-lightbox{position:fixed;inset:0;background:rgba(5,4,3,.97);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px}
+  .sp-lightbox.open{display:flex}
+  .sp-lb-inner{position:relative;width:100%;max-width:940px}
+  .sp-lb-close{position:absolute;top:-38px;right:0;background:none;border:none;color:rgba(255,255,255,.45);font-size:1.5rem;cursor:pointer;transition:color .2s;z-index:10;line-height:1}
+  .sp-lb-close:hover{color:var(--gold)}
+  .sp-lb-video{position:relative;width:100%;aspect-ratio:16/9;border-radius:3px;overflow:hidden;background:#000;border:1px solid rgba(201,148,58,.2)}
+  .sp-lb-video iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+  .sp-lb-photo{width:100%;max-height:80vh;object-fit:contain;display:block;border-radius:3px;border:1px solid rgba(201,148,58,.15)}
+  .sp-lb-caption{margin-top:12px;text-align:center;color:rgba(255,255,255,.45);font-size:.8rem;letter-spacing:.04em}
+</style>
+
+<!-- ЛІЧИЛЬНИК -->
+<div class="sp-counter-strip">
+  <div class="sp-counter-inner">
+    <div class="sp-counter-item"><div class="sp-counter-num">1 200+</div><div class="sp-counter-label">учасників</div></div>
+    <div class="sp-counter-item"><div class="sp-counter-num">8 років</div><div class="sp-counter-label">традиції</div></div>
+    <div class="sp-counter-item"><div class="sp-counter-num">42</div><div class="sp-counter-label">види ягій</div></div>
+    <div class="sp-counter-item"><div class="sp-counter-num">30+</div><div class="sp-counter-label">країн світу</div></div>
+  </div>
+</div>
+
+<!-- ВІДЗИВИ -->
+<section class="sp-reviews-section">
+  <div class="sp-sec-wrap">
+    <div class="sp-sec-header">
+      <div class="sp-sec-tag">Відгуки</div>
+      <h2 class="sp-sec-title">Що говорять <span>учасники</span></h2>
+      <p class="sp-sec-sub">Люди з різних країн, різних шляхів — один простір вогню</p>
+      <div class="sp-gold-line"></div>
+    </div>
+
+    <div class="sp-rev-featured-wrap">
+      <div class="sp-rev-featured">
+        <div class="sp-rev-featured-text">З кожним разом я відчуваю, як моє вміння працювати з наміром стає чіткішим, а результат ритуалу проявляється іноді вже дорогою додому. Завдяки Даянанда Свамі Джі я отримав досвід глибокої, справжньої роботи з вогнем, яка торкається душі та життя.</div>
+        <div class="sp-rev-featured-author">Степан Турський</div>
+        <div class="sp-rev-featured-sub">Учасник з перших практик · Яг'я та Пуджа</div>
+      </div>
+    </div>
+
+    <div class="sp-reviews-grid">
+      <div class="sp-rev-card" onclick="spOpenPhoto('media/відгуки/photo_2026-05-30_12-20-45.jpg','Відгук учасниці')">
+        <img src="media/відгуки/photo_2026-05-30_12-20-45.jpg" alt="Відгук">
+      </div>
+      <div class="sp-rev-card" onclick="spOpenPhoto('media/відгуки/photo_2026-05-30_12-20-50.jpg','Відгук учасниці')">
+        <img src="media/відгуки/photo_2026-05-30_12-20-50.jpg" alt="Відгук">
+      </div>
+      <div class="sp-rev-card" onclick="spOpenPhoto('media/відгуки/photo_2026-05-30_12-20-55.jpg','Відгук учасниці')">
+        <img src="media/відгуки/photo_2026-05-30_12-20-55.jpg" alt="Відгук">
+      </div>
+      <div class="sp-rev-card" onclick="spOpenPhoto('media/відгуки/photo_2026-05-30_12-20-58.jpg','Відгук учасниці')">
+        <img src="media/відгуки/photo_2026-05-30_12-20-58.jpg" alt="Відгук">
+      </div>
+      <div class="sp-rev-card" onclick="spOpenPhoto('media/відгуки/photo_2026-05-30_12-21-04.jpg','Anna Prokopenko')">
+        <img src="media/відгуки/photo_2026-05-30_12-21-04.jpg" alt="Відгук">
+      </div>
+      <div class="sp-rev-card" onclick="spOpenPhoto('media/відгуки/photo_2026-05-30_12-21-09.jpg','Степан Турський')">
+        <img src="media/відгуки/photo_2026-05-30_12-21-09.jpg" alt="Відгук">
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sp-divider">
+
+<!-- ГАЛЕРЕЯ -->
+<section class="sp-gallery-section" id="gallery">
+  <div class="sp-sec-wrap">
+    <div class="sp-sec-header">
+      <div class="sp-sec-tag">Галерея</div>
+      <h2 class="sp-sec-title">Вогонь. <span>Молитва.</span> Простір.</h2>
+      <p class="sp-sec-sub">Кожна яг'я — живий ритуал. Фото і відео з реальних практик ашраму</p>
+      <div class="sp-gold-line"></div>
+    </div>
+
+    <div class="sp-gallery-tabs">
+      <button class="sp-g-tab active" onclick="spFilterGallery('all',this)">Всі</button>
+      <button class="sp-g-tab" onclick="spFilterGallery('photo',this)">Фото</button>
+      <button class="sp-g-tab" onclick="spFilterGallery('video',this)">Відео</button>
+    </div>
+
+    <div class="sp-gallery-grid" id="spGalleryGrid">
+
+      <div class="sp-g-item tall video" data-vimeo="1196904898" data-caption="Ягья · Kailash Dham" onclick="spOpenItem(this)">
+        <img class="sp-g-thumb" src="media/храм/DSC_2390.jpg" alt="">
+        <div class="sp-g-play"></div>
+        <div class="sp-g-overlay"><div class="sp-g-caption">Ягья</div><div class="sp-g-sub">▶ Дивитись</div></div>
+      </div>
+
+      <div class="sp-g-item photo" data-src="media/храм/DSC_2512.jpg" data-caption="Вогонь ягьї" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2512.jpg" alt="Вогонь ягьї">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Вогонь</div><div class="sp-g-sub">Кунда ягьї</div></div>
+      </div>
+
+      <div class="sp-g-item video" data-vimeo="1196904407" data-caption="Відгук учасниці" onclick="spOpenItem(this)">
+        <img class="sp-g-thumb" src="media/храм/DSC_2230.jpg" alt="">
+        <div class="sp-g-play"></div>
+        <div class="sp-g-overlay"><div class="sp-g-caption">Відгук</div><div class="sp-g-sub">▶ Дивитись</div></div>
+      </div>
+
+      <div class="sp-g-item tall photo" data-src="media/храм/DSC_2358.jpg" data-caption="Абхішека · Ганеша" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2358.jpg" alt="Абхішека">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Абхішека</div><div class="sp-g-sub">Підношення Ганеші</div></div>
+      </div>
+
+      <div class="sp-g-item video" data-vimeo="1196910204" data-caption="Ягья · відео" onclick="spOpenItem(this)">
+        <img class="sp-g-thumb" src="media/храм/DSC_2396.jpg" alt="">
+        <div class="sp-g-play"></div>
+        <div class="sp-g-overlay"><div class="sp-g-caption">Ягья</div><div class="sp-g-sub">▶ Дивитись</div></div>
+      </div>
+
+      <div class="sp-g-item wide video" data-vimeo="1196910319" data-caption="Ягья · відео" onclick="spOpenItem(this)">
+        <img class="sp-g-thumb" src="media/храм/DSC_2451.jpg" alt="">
+        <div class="sp-g-play"></div>
+        <div class="sp-g-overlay"><div class="sp-g-caption">Ягья</div><div class="sp-g-sub">▶ Дивитись</div></div>
+      </div>
+
+      <div class="sp-g-item video" data-vimeo="1196910272" data-caption="Ягья · відео" onclick="spOpenItem(this)">
+        <img class="sp-g-thumb" src="media/храм/DSC_2200.jpg" alt="">
+        <div class="sp-g-play"></div>
+        <div class="sp-g-overlay"><div class="sp-g-caption">Ягья</div><div class="sp-g-sub">▶ Дивитись</div></div>
+      </div>
+
+      <div class="sp-g-item photo" data-src="media/храм/DSC_2314.jpg" data-caption="Абхішека" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2314.jpg" alt="Абхішека">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Абхішека</div><div class="sp-g-sub">Учасник</div></div>
+      </div>
+
+      <div class="sp-g-item wide photo" data-src="media/храм/DSC_2171.jpg" data-caption="Учасники в молитві" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2171.jpg" alt="Учасники в молитві">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Учасники</div><div class="sp-g-sub">Початок ягьї</div></div>
+      </div>
+
+      <div class="sp-g-item photo" data-src="media/храм/DSC_2488.jpg" data-caption="Медитація" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2488.jpg" alt="Медитація">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Медитація</div><div class="sp-g-sub">Практика</div></div>
+      </div>
+
+      <div class="sp-g-item wide photo" data-src="media/храм/DSC_2402.jpg" data-caption="Свамі Джі · Ягья" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2402.jpg" alt="Свамі Джі">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Свамі Джі</div><div class="sp-g-sub">Ягья</div></div>
+      </div>
+
+      <div class="sp-g-item photo" data-src="media/храм/DSC_2369.jpg" data-caption="Запалення ягьї" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2369.jpg" alt="Запалення ягьї">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Запалення</div><div class="sp-g-sub">Початок ритуалу</div></div>
+      </div>
+
+      <div class="sp-g-item tall photo" data-src="media/храм/DSC_2181.jpg" data-caption="Підношення вогню" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2181.jpg" alt="Підношення">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Підношення</div><div class="sp-g-sub">Учасник</div></div>
+      </div>
+
+      <div class="sp-g-item photo" data-src="media/храм/DSC_2423.jpg" data-caption="Учасники ягьї" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2423.jpg" alt="Учасники">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Учасники</div><div class="sp-g-sub">Ягья</div></div>
+      </div>
+
+      <div class="sp-g-item photo" data-src="media/храм/DSC_2241.jpg" data-caption="Абхішека · пара" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2241.jpg" alt="Абхішека">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Абхішека</div><div class="sp-g-sub">Разом</div></div>
+      </div>
+
+      <div class="sp-g-item wide photo" data-src="media/храм/DSC_2460.jpg" data-caption="Ягья · вогонь і намір" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2460.jpg" alt="Ягья">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Вогонь і намір</div><div class="sp-g-sub">Ягья</div></div>
+      </div>
+
+      <div class="sp-g-item tall photo" data-src="media/храм/DSC_2297.jpg" data-caption="Абхішека" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2297.jpg" alt="Абхішека">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Абхішека</div><div class="sp-g-sub">Учасниця</div></div>
+      </div>
+
+      <div class="sp-g-item photo" data-src="media/храм/DSC_2474.jpg" data-caption="Підношення" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2474.jpg" alt="Підношення">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Підношення</div><div class="sp-g-sub">Учасниці</div></div>
+      </div>
+
+      <div class="sp-g-item tall photo" data-src="media/храм/DSC_2327.jpg" data-caption="Абхішека" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2327.jpg" alt="Абхішека">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Абхішека</div><div class="sp-g-sub">Учасниця</div></div>
+      </div>
+
+      <div class="sp-g-item wide photo" data-src="media/храм/DSC_2384.jpg" data-caption="Ягья · спільна практика" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2384.jpg" alt="Ягья">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Спільна практика</div><div class="sp-g-sub">Ягья</div></div>
+      </div>
+
+      <div class="sp-g-item photo" data-src="media/храм/DSC_2523.jpg" data-caption="Аарті" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2523.jpg" alt="Аарті">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Аарті</div><div class="sp-g-sub">Завершення</div></div>
+      </div>
+
+      <div class="sp-g-item tall photo" data-src="media/храм/DSC_2514.jpg" data-caption="Вівтар" onclick="spOpenItem(this)">
+        <img src="media/храм/DSC_2514.jpg" alt="Вівтар">
+        <div class="sp-g-overlay"><div class="sp-g-caption">Вівтар</div><div class="sp-g-sub">Підношення</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="sp-lightbox" id="spLightbox" onclick="spCloseLb(event)">
+  <div class="sp-lb-inner">
+    <button class="sp-lb-close" onclick="spCloseLb()">✕</button>
+    <div id="spLbContent"></div>
+    <div class="sp-lb-caption" id="spLbCaption"></div>
+  </div>
+</div>
+
+<script>
+function spOpenPhoto(src, caption) {
+  document.getElementById('spLbCaption').textContent = caption;
+  document.getElementById('spLbContent').innerHTML = '<img class="sp-lb-photo" src="' + src + '" alt="' + caption + '">';
+  document.getElementById('spLightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function spFilterGallery(type, btn) {
+  document.querySelectorAll('.sp-g-tab').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+  document.querySelectorAll('#spGalleryGrid .sp-g-item').forEach(function(item){
+    item.style.display = (type === 'all' || item.classList.contains(type)) ? '' : 'none';
+  });
+}
+function spOpenItem(el) {
+  var caption = el.dataset.caption || '';
+  document.getElementById('spLbCaption').textContent = caption;
+  var html = '';
+  if (el.classList.contains('video') && el.dataset.vimeo) {
+    html = '<div class="sp-lb-video"><iframe src="https://player.vimeo.com/video/' + el.dataset.vimeo + '?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>';
+  } else if (el.classList.contains('photo') && el.dataset.src) {
+    html = '<img class="sp-lb-photo" src="' + el.dataset.src + '" alt="' + caption + '">';
+  }
+  document.getElementById('spLbContent').innerHTML = html;
+  document.getElementById('spLightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function spCloseLb(e) {
+  if (!e || e.target === document.getElementById('spLightbox') || e.currentTarget && e.currentTarget.classList.contains('sp-lb-close')) {
+    document.getElementById('spLightbox').classList.remove('open');
+    document.getElementById('spLbContent').innerHTML = '';
+    document.body.style.overflow = '';
+  }
+}
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') spCloseLb({target:document.getElementById('spLightbox')}); });
+</script>
+
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- ═══════════════════════════════════════════ -->
 <!-- BLOCK 11: FAQ                             -->
 <!-- ═══════════════════════════════════════════ -->
 <section class="faq-section" id="faq">
