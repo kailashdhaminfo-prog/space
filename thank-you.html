@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дякуємо за оплату — Kailash Dham</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0f0f0f;
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 16px;
+    padding: 48px 40px;
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+  }
+  .icon { font-size: 56px; margin-bottom: 20px; }
+  h1 { font-size: 24px; color: #c9a96e; margin-bottom: 16px; }
+  .line1 { font-size: 16px; color: #e0e0e0; font-weight: 600; margin-bottom: 8px; }
+  .line2 { font-size: 14px; color: #999; line-height: 1.6; margin-bottom: 4px; }
+  .channel-link { font-size: 14px; color: #c9a96e; line-height: 1.6; margin-bottom: 0; }
+  .channel-link a { color: #c9a96e; text-decoration: none; border-bottom: 1px solid rgba(201,169,110,.35); }
+  .channel-link a:hover { border-bottom-color: #c9a96e; }
+  .btn-wrap { margin-top: 28px; display: flex; flex-direction: column; gap: 12px; }
+  .btn {
+    display: inline-block;
+    background: #c9a96e;
+    color: #0f0f0f;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 32px;
+    border-radius: 10px;
+    transition: background .2s;
+  }
+  .btn:hover { background: #b8945a; }
+  .btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: #c9a96e;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: 1px solid rgba(201,169,110,.4);
+    transition: border-color .2s, color .2s;
+  }
+  .btn-outline:hover { border-color: #c9a96e; }
+  .sub { margin-top: 12px; font-size: 13px; color: #555; }
+  .btn-home {
+    display: inline-block;
+    background: transparent;
+    color: rgba(255,255,255,.45);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 10px 0;
+    transition: color .2s;
+  }
+  .btn-home:hover { color: #c9a96e; }
+
+  .site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+    background: linear-gradient(to bottom, rgba(10,8,6,.9) 0%, transparent 100%);
+  }
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .logo-name {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: #c9943a;
+  }
+  .logo-sub {
+    font-size: 7px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,.4);
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+  .header-home {
+    font-size: 12px;
+    letter-spacing: .08em;
+    color: rgba(255,255,255,.45);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+  .header-home:hover { color: #c9943a; }
+
+.site-footer{background:#050403;border-top:1px solid rgba(201,148,58,.15);padding:40px 24px;margin-top:40px;width:100%}
+.footer-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px}
+@media(max-width:640px){.footer-inner{grid-template-columns:1fr}.card{padding:36px 24px}}
+.footer-col{display:flex;flex-direction:column;gap:8px}
+.footer-col a{font-size:.72rem;color:rgba(201,148,58,.65);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:color .2s}
+.footer-col a:hover{color:#c9943a}
+.footer-col strong{font-size:.78rem;color:rgba(255,255,255,.65);letter-spacing:.04em;margin-bottom:4px}
+.footer-col span{color:rgba(255,255,255,.3);font-size:.72rem;line-height:1.6}
+.footer-col .footer-link{color:rgba(255,255,255,.3);text-decoration:none;font-size:.72rem;text-transform:none;letter-spacing:0}
+.footer-col .footer-link:hover{color:rgba(201,148,58,.7)}
+.footer-note{color:rgba(255,255,255,.2);font-size:.67rem;font-style:italic;margin-top:6px}
+</style>
+</head>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
+<header class="site-header">
+  <a href="/" class="logo-link">
+    <img src="/kailashdham-logo.png" width="40" height="40" alt="Kailash Dham" style="mix-blend-mode:screen;object-fit:contain" onerror="this.style.display='none'">
+    <div>
+      <div class="logo-name">KAILASH DHAM</div>
+      <div class="logo-sub">Space of Practices</div>
+    </div>
+  </a>
+  <a href="/" class="header-home" id="header-home">← На головну</a>
+</header>
+<div class="card">
+  <div class="icon">🙏</div>
+  <h1 id="title">Дякуємо за оплату!</h1>
+  <p class="line1" id="line1">Оплата є підтвердженням участі.</p>
+  <p class="line2" id="line2">Додаткові запитання можна поставити в каналі:</p>
+  <p class="channel-link"><a href="https://t.me/kailas_dham" target="_blank" id="channel">t.me/kailas_dham</a></p>
+  <div class="btn-wrap">
+    <a href="/#zaochna-uchast" class="btn-outline" id="btn-tips">📋 Рекомендації щодо заочної участі</a>
+    <a href="https://t.me/kailashdham_bot" class="btn" id="btn">Повернутися в бот</a>
+    <a href="/" class="btn-home" id="btn-home">← На головну</a>
+  </div>
+  <p class="sub" id="sub">@kailashdham_bot</p>
+</div>
+
+<script>
+const _stored = localStorage.getItem('kd_lang');
+const _nav = navigator.language || '';
+const lang = _stored || (_nav.startsWith('ru') ? 'ru' : _nav.startsWith('en') ? 'en' : 'uk');
+const texts = {
+  uk: {
+    title: 'Дякуємо за оплату!',
+    line1: 'Оплата є підтвердженням участі.',
+    line2: 'Додаткові запитання можна поставити в каналі:',
+    channel: 't.me/kailas_dham',
+    btnTips: '📋 Рекомендації щодо заочної участі',
+    btn: 'Повернутися в бот',
+    btnHome: '← На головну',
+    headerHome: '← На головну',
+  },
+  ru: {
+    title: 'Спасибо за оплату!',
+    line1: 'Оплата является подтверждением участия.',
+    line2: 'Дополнительные вопросы можно задать в канале:',
+    channel: 't.me/kailas_dham',
+    btnTips: '📋 Рекомендации для дистанционного участия',
+    btn: 'Вернуться в бот',
+    btnHome: '← На главную',
+    headerHome: '← На главную',
+  },
+  en: {
+    title: 'Thank you for your payment!',
+    line1: 'Payment confirms your participation.',
+    line2: 'You can ask additional questions in the channel:',
+    channel: 't.me/kailas_dham',
+    btnTips: '📋 Remote participation guide',
+    btn: 'Return to bot',
+    btnHome: '← Back to main',
+    headerHome: '← Back to main',
+  },
+};
+const t = texts[lang] || texts.uk;
+document.getElementById('title').textContent = t.title;
+document.getElementById('line1').textContent = t.line1;
+document.getElementById('line2').textContent = t.line2;
+document.getElementById('channel').textContent = t.channel;
+document.getElementById('btn-tips').textContent = t.btnTips;
+document.getElementById('btn').textContent = t.btn;
+document.getElementById('btn-home').textContent = t.btnHome;
+document.getElementById('header-home').textContent = t.headerHome;
+</script>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <a href="/polityka-konfidentsiynosti.html">Політика конфіденційності</a>
+      <a href="/publichna-oferta.html">Публічна оферта</a>
+      <a href="/polityka-povernennya-koshtiv.html">Політика повернення коштів</a>
+    </div>
+    <div class="footer-col">
+      <strong>Контактна інформація:</strong>
+      <span>ФОП Дяченко Дмитро Вікторович</span>
+      <span>ІПН: 2578013372</span>
+      <span>Адреса: Київська область, Вишгородський район, с. Димер, вул. Шевченко, 1, кв. 3</span>
+    </div>
+    <div class="footer-col">
+      <span>Телефон: <a class="footer-link" href="tel:+380638258339">+380638258339</a></span>
+      <span>Email: <a class="footer-link" href="mailto:dayanandagiri@gmail.com">dayanandagiri@gmail.com</a></span>
+      <span class="footer-note">З усіх питань щодо оплати, участі, доступу до матеріалів, перенесення або повернення коштів покупець може звернутися за вказаними контактами.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
